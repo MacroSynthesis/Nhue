@@ -6,45 +6,36 @@
   <title>Nhue Creative</title>
   <link rel="stylesheet" href="assets/css/Nhue.css"/>
 
-  <!-- Carousel core (unchanged) -->
-  <style>
-    .carousel-container{position:relative;max-width:1000px;margin:2rem auto;overflow:hidden;border-radius:12px;box-shadow:0 4px 10px rgba(0,0,0,.2)}
-    .carousel-track{display:flex;transition:transform .5s ease-in-out}
-    .carousel-item{min-width:100%;box-sizing:border-box}
-    .carousel-item img{width:100%;height:500px;object-fit:cover;border-radius:12px}
-    .carousel-btn{position:absolute;top:50%;transform:translateY(-50%);background:rgba(0,0,0,.5);border:none;color:#fff;font-size:2rem;cursor:pointer;padding:.5rem 1rem;border-radius:50%;z-index:10;transition:background .3s}
-    .carousel-btn:hover{background:rgba(0,0,0,.8)}
-    .carousel-btn.prev{left:15px}
-    .carousel-btn.next{right:15px}
-    .carousel-indicators{display:flex;justify-content:center;margin-top:10px;gap:8px}
-    .carousel-indicators button{width:12px;height:12px;border-radius:50%;border:none;background:#bbb;cursor:pointer;transition:background .3s}
-    .carousel-indicators button.active{background:#333}
-  </style>
+  <script src="assets/js/main.js" defer></script>
 </head>
 <body>
 
   <!-- NAV OUTSIDE HERO so it can be full-bleed -->
   <nav class="navbar">
-    <div class="logo">NHUE CREATIVE</div>
-    <ul class="nav-links">
-      <li><a href="#about">About</a></li>
-      <li><a href="#services">Services</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
-    <a href="#contact" class="btn">Get in Touch</a>
+    <div class="container">
+      <div class="logo">NHUE CREATIVE</div>
+      <ul class="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <a href="#contact" class="btn">Get in Touch</a>
+    </div>
   </nav>
 
   <!-- HERO -->
   <section class="hero">
     <div class="overlay">
-      <div class="hero-content">
-        <h1 class="hero-title">
-          <span class="be-text">Be</span>
-          <img src="assets/images/nhue_logo_main.png" alt="Nhue Logo" class="nhue-logo">
-        </h1>
-        <h2 class="hero-subtitle">Discover <span class="highlight">Nhue</span></h2>
-        <p>EXPERIENCE NHUE ENERGY. PASSIONATE | ICONIC | <span class="creative">CREATIVE</span></p>
-        <a href="#work" class="view-btn">View Our Work →</a>
+      <div class="container">
+        <div class="hero-content">
+          <h1 class="hero-title">
+            <span class="be-text">Be</span>
+            <img src="assets/images/nhue_logo_main.png" alt="Nhue Logo" class="nhue-logo">
+          </h1>
+          <h2 class="hero-subtitle">Discover <span class="highlight">Nhue</span></h2>
+          <p>EXPERIENCE NHUE ENERGY. PASSIONATE | ICONIC | <span class="creative">CREATIVE</span></p>
+          <a href="#work" class="view-btn">View Our Work →</a>
+        </div>
       </div>
     </div>
     <img src="assets/images/nhue_logo_side.png" alt="Nhue Side Logo" class="side-logo">
@@ -83,42 +74,83 @@
     </div>
   </section>
 
-  <!-- JS (unchanged) -->
-  <script>
-    const track = document.querySelector(".carousel-track");
-    const items = document.querySelectorAll(".carousel-item");
-    const prevBtn = document.querySelector(".prev");
-    const nextBtn = document.querySelector(".next");
-    const indicatorsContainer = document.querySelector(".carousel-indicators");
+  <!-- SERVICES -->
+  <section id="services" class="services-section">
+    <div class="container">
+      <h2>Services</h2>
+      <p class="subtitle">From concept to execution, we provide comprehensive creative services that help your brand stand out in the marketplace.</p>
+      
+      <div class="services-grid">
+          <div class="service-card">
+              <h3>Production</h3>
+              <p>We offer professional photo and video production for events, brands, and campaigns. From concept to post-production, our team ensures high-quality visuals that capture your story.</p>
+          </div>
+          <div class="service-card">
+              <h3>Advertising</h3>
+              <p>Elevate your brand with tailored ad campaigns and content creation. We produce engaging visual assets for digital platforms, social media, and print, guided by strong creative direction.</p>
+          </div>
+          <div class="service-card">
+              <h3>Brand Expo n Exhibits</h3>
+              <p>Clients can set up their own exhibits, pop-up shops, and brand showcases within our flexible space. The venue supports a wide range of setups to help brands stand out.</p>
+          </div>
+          <div class="service-card">
+              <h3>Rehearsal Spaces</h3>
+              <p>Ideal for dancers, performers, production teams, and creative rehearsals. Our spaces are available for practice sessions, casting calls, or run-throughs with flexible rental options.</p>
+          </div>
+          <div class="service-card">
+              <h3>Conferences & Events</h3>
+              <p>Nhue offers a venue suitable for meetings, launches, and seminars. The space is versatile and can be arranged to suit various event formats and audience sizes.</p>
+          </div>
+          <div class="service-card">
+              <h3>Product Launching Support</h3>
+              <p>We offer a dedicated space for brands to host product launches, helping create a professional and impactful reveal for your audience.</p>
+          </div>
+          <div class="service-card">
+              <h3>Content Creation Hub</h3>
+              <p>Our hub is open to creators, influencers, and businesses needing a space to shoot content. With customizable setups, backdrops, and lighting, you can create without limits.</p>
+          </div>
+      </div>
+    </div>
+  </section>
 
-    let currentIndex = 0;
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+        <!-- Brand Column -->
+        <div class="footer-brand">
+            <img src="assets/images/nhue_logo_main.png" alt="Nhue Creative">
+            <p>Offering versatile spaces for shoots, events, and content creation, anytime inspiration strikes.</p>
+        </div>
 
-    items.forEach((_, index) => {
-      const dot = document.createElement("button");
-      if (index === 0) dot.classList.add("active");
-      dot.addEventListener("click", () => { currentIndex = index; updateCarousel(); });
-      indicatorsContainer.appendChild(dot);
-    });
+        <!-- Use Cases -->
+        <div class="footer-section">
+            <h3>Use Cases</h3>
+            <ul class="footer-links">
+                <li><a href="#">Production</a></li>
+                <li><a href="#">Advertising</a></li>
+                <li><a href="#">Content Creation</a></li>
+            </ul>
+        </div>
 
-    const dots = document.querySelectorAll(".carousel-indicators button");
+        <!-- Company -->
+        <div class="footer-section">
+            <h3>Company</h3>
+            <ul class="footer-links">
+                <li><a href="#">About Us</a></li>
+                <li><a href="#">Contact Us</a></li>
+            </ul>
+        </div>
 
-    function updateCarousel() {
-      track.style.transform = `translateX(-${currentIndex * 100}%)`;
-      dots.forEach(dot => dot.classList.remove("active"));
-      dots[currentIndex].classList.add("active");
-    }
-
-    nextBtn.addEventListener("click", () => {
-      currentIndex = (currentIndex + 1) % items.length;
-      updateCarousel();
-    });
-
-    prevBtn.addEventListener("click", () => {
-      currentIndex = (currentIndex - 1 + items.length) % items.length;
-      updateCarousel();
-    });
-
-    updateCarousel();
-  </script>
+        <!-- Follow Us -->
+        <div class="footer-section">
+            <h3>Follow us</h3>
+            <div class="social-links">
+                <a href="#"><img src="assets/images/facebook.png" alt="Facebook"></a>
+                <a href="#"><img src="assets/images/instagram.png" alt="Instagram"></a>
+                <a href="#"><img src="assets/images/tiktok.png" alt="TikTok"></a>
+            </div>
+        </div>
+    </div>
+</footer>
 </body>
 </html>

@@ -7,6 +7,17 @@ body, html {
   overflow-x: hidden;
 }
 
+/* Global Container Style */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Reset */
+
 img {
   max-width: 100%;
   height: auto;
@@ -17,7 +28,7 @@ img {
 .hero {
   position: relative;
   height: 100vh; /* full viewport height */
-  background: url('assets/images/nhue_studio_bg.png') no-repeat center center;
+  background: url('../images/nhue_studio_bg.png') no-repeat center center;
   background-size: cover;   /* fully cover page */
   color: white;
   overflow: hidden;
@@ -31,8 +42,13 @@ img {
   background: rgba(0, 0, 0, 0.3);
   display: flex;
   align-items: center;
+  justify-content: center;
+}
+
+.overlay .container {
+  display: flex;
+  align-items: center;
   justify-content: flex-start;
-  padding: 0 2em;
 }
 
 /* Hero content */
@@ -111,17 +127,19 @@ img {
   top: 0;
   left: 0;
   width: 100%;
-  padding: 1em 2em;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-
   background: rgba(255, 255, 255, 0.1); /* glassmorphism */
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
-
   z-index: 1000;
   box-sizing: border-box;
+}
+
+.navbar .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
 }
 
 .logo {
@@ -185,10 +203,13 @@ img {
 
 /* --- About Section --- */
 .about-section {
-  background: #8b1a1a;
+  background: url('../images/background2.jpg') no-repeat center center fixed;
+  background-size: cover;
+  position: relative;
   color: white;
   text-align: center;
-  padding: 5em 2em;
+  padding: 8rem 0;
+  min-height: 100vh;
 }
 
 .about-wrapper h2,
@@ -213,24 +234,25 @@ img {
 /* --- Carousel (Horizontal) --- */
 .carousel {
   position: relative;
-  max-width: 600px;
-  height: 400px;
+  width: 100%;
+  height: 450px;
   margin: 0 auto;
   overflow: hidden;
-  border-radius: 15px;
-  box-shadow: 0 6px 25px rgba(0,0,0,0.5);
 }
 
 .carousel-track {
-  display: flex; /* horizontal */
+  display: flex;
+  position: relative;
   transition: transform 0.6s ease-in-out;
   height: 100%;
 }
 
 .carousel-item {
+  position: relative;
   min-width: 100%;
   height: 100%;
   box-sizing: border-box;
+  overflow: hidden;
 }
 
 .carousel-item img {
@@ -239,25 +261,220 @@ img {
   object-fit: cover;
 }
 
-/* Buttons */
+/* Navigation Dots */
+.carousel-dots {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 8px;
+  z-index: 10;
+}
+
+.carousel-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.5);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.carousel-dot.active {
+  background: #FDCA21;
+}
+
+/* Navigation Buttons */
 .carousel button {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  background: rgba(0,0,0,0.6);
+  background: rgba(0,0,0,0.3);
   border: none;
   color: white;
-  font-size: 2rem;
+  font-size: 1.5rem;
   cursor: pointer;
-  padding: 0.5em 0.8em;
-  border-radius: 50%;
-  transition: background 0.3s ease;
   z-index: 10;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
 }
 
 .carousel button:hover {
-  background: rgba(0,0,0,0.9);
+  background: rgba(0,0,0,0.5);
 }
 
-.prev { left: 10px; }
-.next { right: 10px; }
+.prev { 
+  left: -60px;
+}
+
+.next { 
+  right: -60px;
+}
+
+/* --- Services Section --- */
+.services-section {
+  background: url('../images/services_bg.png') no-repeat center center;
+  background-size: cover;
+  background-color: #1E1E1E;
+  padding: 8rem 0;
+  text-align: center;
+}
+
+.services-section h2 {
+  color: #FDCA21;
+  font-size: 4rem;
+  font-weight: bold;
+  margin-bottom: 24px;
+}
+
+.services-section .subtitle {
+  color: white;
+  font-size: 1.2rem;
+  max-width: 800px;
+  margin: 0 auto 60px;
+  line-height: 1.6;
+}
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 30px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.service-card {
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 24px;
+  padding: 40px;
+  text-align: left;
+  backdrop-filter: blur(10px);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.service-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.service-card h3 {
+  color: #1E1E1E;
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.service-card p {
+  color: #333;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin: 0;
+}
+
+@media (max-width: 768px) {
+  .services-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .services-section h2 {
+    font-size: 3rem;
+  }
+  
+  .service-card {
+    padding: 30px;
+  }
+}
+
+/* --- Footer Section --- */
+.footer {
+  background-color: #000;
+  color: white;
+  padding: 6rem 0;
+}
+
+.footer .container {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 40px;
+}
+
+.footer-brand {
+  margin-right: 40px;
+}
+
+.footer-brand img {
+  width: 120px;
+  margin-bottom: 20px;
+}
+
+.footer-brand p {
+  color: #888;
+  font-size: 0.9rem;
+  line-height: 1.6;
+  margin-top: 15px;
+}
+
+.footer-section h3 {
+  color: white;
+  font-size: 1.2rem;
+  margin-bottom: 20px;
+  font-weight: bold;
+}
+
+.footer-links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-links li {
+  margin-bottom: 12px;
+}
+
+.footer-links a {
+  color: #888;
+  text-decoration: none;
+  font-size: 0.9rem;
+  transition: color 0.3s ease;
+}
+
+.footer-links a:hover {
+  color: #FDCA21;
+}
+
+.social-links {
+  display: flex;
+  gap: 15px;
+  margin-top: 10px;
+}
+
+.social-links a {
+  display: inline-block;
+  transition: opacity 0.3s ease;
+}
+
+.social-links img {
+  width: 24px;
+  height: 24px;
+}
+
+.social-links a:hover {
+  opacity: 0.8;
+}
+
+@media (max-width: 768px) {
+  .footer-container {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+  
+  .footer-brand {
+    margin-right: 0;
+  }
+}
