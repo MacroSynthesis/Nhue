@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Nhue Creative</title>
+  <link rel="stylesheet" href="Nhue.css"/>
+
+  <!-- Carousel core (unchanged) -->
+  <style>
+    .carousel-container{position:relative;max-width:1000px;margin:2rem auto;overflow:hidden;border-radius:12px;box-shadow:0 4px 10px rgba(0,0,0,.2)}
+    .carousel-track{display:flex;transition:transform .5s ease-in-out}
+    .carousel-item{min-width:100%;box-sizing:border-box}
+    .carousel-item img{width:100%;height:500px;object-fit:cover;border-radius:12px}
+    .carousel-btn{position:absolute;top:50%;transform:translateY(-50%);background:rgba(0,0,0,.5);border:none;color:#fff;font-size:2rem;cursor:pointer;padding:.5rem 1rem;border-radius:50%;z-index:10;transition:background .3s}
+    .carousel-btn:hover{background:rgba(0,0,0,.8)}
+    .carousel-btn.prev{left:15px}
+    .carousel-btn.next{right:15px}
+    .carousel-indicators{display:flex;justify-content:center;margin-top:10px;gap:8px}
+    .carousel-indicators button{width:12px;height:12px;border-radius:50%;border:none;background:#bbb;cursor:pointer;transition:background .3s}
+    .carousel-indicators button.active{background:#333}
+  </style>
+</head>
+<body>
+
+  <!-- NAV OUTSIDE HERO so it can be full-bleed -->
+  <nav class="navbar">
+    <div class="logo">NHUE CREATIVE</div>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <a href="#contact" class="btn">Get in Touch</a>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="overlay">
+      <div class="hero-content">
+        <h1 class="hero-title">
+          <span class="be-text">Be</span>
+          <img src="assets/images/nhue_logo_main.png" alt="Nhue Logo" class="nhue-logo">
+        </h1>
+        <h2 class="hero-subtitle">Discover <span class="highlight">Nhue</span></h2>
+        <p>EXPERIENCE NHUE ENERGY. PASSIONATE | ICONIC | <span class="creative">CREATIVE</span></p>
+        <a href="#work" class="view-btn">View Our Work →</a>
+      </div>
+    </div>
+    <img src="assets/images/nhue_logo_side.png" alt="Nhue Side Logo" class="side-logo">
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about" class="about-section">
+    <div class="about-wrapper">
+      <h2>About Us</h2>
+      <p>
+        Nhue is a 24/7 creative hub built for makers, brands, and dreamers. From photo and video 
+        shoots to brand expos, exhibits, rehearsals, conferences, product launches, and content 
+        creation — we’re the space where ideas take shape and stories come to life. Designed for 
+        flexibility and driven by creativity, Nhue offers an inspiring environment that works around 
+        your schedule, not against it. Whatever you’re planning, we’re here — all day, all night.
+      </p>
+    </div>
+
+    <div class="studio-wrapper">
+      <h2>Our Studio</h2>
+      <p class="studio-subtitle">Where creativity comes to life</p>
+
+      <div class="carousel-container">
+        <div class="carousel-track">
+          <div class="carousel-item"><img src="assets/images/conference_room.jpg" alt="Studio 1"></div>
+          <div class="carousel-item"><img src="assets/images/shooting_area.jpg" alt="Studio 2"></div>
+          <div class="carousel-item"><img src="assets/images/makeup_area.jpg" alt="Studio 3"></div>
+          <div class="carousel-item"><img src="assets/images/vip_room.jpg" alt="Studio 4"></div>
+          <div class="carousel-item"><img src="assets/images/conference_room.jpg" alt="Studio 5"></div>
+        </div>
+        <button class="carousel-btn prev">&#10094;</button>
+        <button class="carousel-btn next">&#10095;</button>
+      </div>
+
+      <div class="carousel-indicators"></div>
+    </div>
+  </section>
+
+  <!-- JS (unchanged) -->
+  <script>
+    const track = document.querySelector(".carousel-track");
+    const items = document.querySelectorAll(".carousel-item");
+    const prevBtn = document.querySelector(".prev");
+    const nextBtn = document.querySelector(".next");
+    const indicatorsContainer = document.querySelector(".carousel-indicators");
+
+    let currentIndex = 0;
+
+    items.forEach((_, index) => {
+      const dot = document.createElement("button");
+      if (index === 0) dot.classList.add("active");
+      dot.addEventListener("click", () => { currentIndex = index; updateCarousel(); });
+      indicatorsContainer.appendChild(dot);
+    });
+
+    const dots = document.querySelectorAll(".carousel-indicators button");
+
+    function updateCarousel() {
+      track.style.transform = `translateX(-${currentIndex * 100}%)`;
+      dots.forEach(dot => dot.classList.remove("active"));
+      dots[currentIndex].classList.add("active");
+    }
+
+    nextBtn.addEventListener("click", () => {
+      currentIndex = (currentIndex + 1) % items.length;
+      updateCarousel();
+    });
+
+    prevBtn.addEventListener("click", () => {
+      currentIndex = (currentIndex - 1 + items.length) % items.length;
+      updateCarousel();
+    });
+
+    updateCarousel();
+  </script>
+</body>
+</html>
