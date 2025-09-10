@@ -81,7 +81,7 @@ img {
 
 .hero-subtitle {
   font-size: 3rem;
-  margin: -0.1em 0;
+  margin: -0.7em 0 0.3em;
 }
 
 .highlight, .creative {
@@ -90,7 +90,7 @@ img {
 }
 
 .hero-content p {
-  margin: 1em 0;
+  margin: 1rem 0;
   font-size: 1rem;
   letter-spacing: 1px;
 }
@@ -140,6 +140,41 @@ img {
   align-items: center;
   padding-top: 1.5rem;
   padding-bottom: 1.5rem;
+  position: relative;
+}
+
+/* Mobile menu button */
+.menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  color: white;
+  font-size: 1.5rem;
+  cursor: pointer;
+  padding: 0.5rem;
+}
+
+@media (max-width: 768px) {
+  .menu-toggle {
+    display: block;
+    position: absolute;
+    right: 1rem;
+    top: 1rem;
+  }
+
+  .nav-links {
+    display: none;
+    width: 100%;
+    padding-top: 1rem;
+  }
+
+  .nav-links.active {
+    display: flex;
+  }
+
+  .navbar .container {
+    flex-wrap: wrap;
+  }
 }
 
 .logo {
@@ -174,20 +209,176 @@ img {
   white-space: nowrap;
 }
 
-/* Responsive Navbar */
+/* Responsive Styles */
+@media (max-width: 1024px) {
+  .container {
+    padding: 0 1.5rem;
+  }
+
+  .services-section h2 {
+    font-size: 3.5rem;
+  }
+
+  .footer .container {
+    grid-template-columns: 1.5fr 1fr 1fr 1fr;
+    gap: 30px;
+  }
+}
+
 @media (max-width: 768px) {
-  .navbar {
+  /* Navbar */
+  .navbar .container {
     flex-direction: column;
     align-items: flex-start;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
   }
+
   .nav-links {
     flex-direction: column;
     gap: 1em;
     margin-top: 1em;
+    width: 100%;
   }
+
   .btn {
     margin-left: 0;
     margin-top: 1em;
+    display: inline-block;
+  }
+
+  /* Hero Section */
+  .hero-content {
+    text-align: center;
+    padding: 0 1rem;
+  }
+
+  .hero-title {
+    flex-direction: column;
+    gap: 0.3rem;
+  }
+
+  .nhue-logo {
+    height: 6rem;
+  }
+
+  .hero-subtitle {
+    font-size: 2.5rem;
+  }
+
+  .side-logo {
+    width: 200px;
+    right: 1em;
+    bottom: 15px;
+  }
+
+  /* About Section */
+  .about-section {
+    padding: 6rem 0;
+  }
+
+  .about-wrapper p {
+    padding: 0 1rem;
+    font-size: 0.95rem;
+  }
+
+  /* Carousel */
+  .carousel-container {
+    margin: 1rem auto;
+  }
+
+  .carousel-item img {
+    height: 400px;
+  }
+
+  /* Services Section */
+  .services-section {
+    padding: 6rem 0;
+  }
+
+  .services-section h2 {
+    font-size: 3rem;
+  }
+
+  .services-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+    padding: 0 1rem;
+  }
+
+  .service-card {
+    padding: 30px;
+  }
+
+  .service-card h3 {
+    font-size: 1.75rem;
+  }
+
+  /* Footer */
+  .footer {
+    padding: 4rem 0;
+  }
+
+  .footer .container {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    text-align: center;
+  }
+
+  .footer-brand {
+    margin-right: 0;
+  }
+
+  .social-links {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 480px) {
+  /* Further adjustments for very small screens */
+  .container {
+    padding: 0 1rem;
+  }
+
+  .hero-content {
+    padding: 0 0.5rem;
+  }
+
+  .hero-subtitle {
+    font-size: 2rem;
+  }
+
+  .be-text {
+    font-size: 2.5rem;
+  }
+
+  .nhue-logo {
+    height: 5rem;
+  }
+
+  .side-logo {
+    width: 150px;
+  }
+
+  .services-section h2 {
+    font-size: 2.5rem;
+  }
+
+  .service-card {
+    padding: 20px;
+  }
+
+  .service-card h3 {
+    font-size: 1.5rem;
+  }
+
+  .about-wrapper h2,
+  .studio-wrapper h2 {
+    font-size: 1.75rem;
+  }
+
+  .carousel-item img {
+    height: 300px;
   }
 }
 
@@ -207,22 +398,40 @@ img {
   background-size: cover;
   position: relative;
   color: white;
-  text-align: center;
   padding: 8rem 0;
   min-height: 100vh;
 }
 
-.about-wrapper h2,
-.studio-wrapper h2 {
+.about-wrapper {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  text-align: left;
+}
+
+.about-wrapper h2 {
   font-size: 2rem;
   margin-bottom: 1em;
+  text-align: left;
 }
 
 .about-wrapper p {
-  max-width: 800px;
-  margin: 0 auto 3em auto;
-  line-height: 1.6;
-  font-size: 1rem;
+  max-width: 1150px;
+  margin: 0 0 3em 0;
+  line-height: 1.8;
+  font-size: 1.1rem;
+  text-align: left;
+  letter-spacing: 0.2px;
+}
+
+/* Keep studio section centered */
+.studio-wrapper {
+  text-align: center;
+}
+
+.studio-wrapper h2 {
+  font-size: 2rem;
+  margin-bottom: 1em;
 }
 
 .studio-subtitle {
