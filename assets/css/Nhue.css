@@ -282,14 +282,21 @@ img {
     font-size: 0.95rem;
   }
 
-  /* Carousel */
-  .carousel-container {
-    margin: 1rem auto;
-  }
+/* Carousel */
+.carousel-container {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;  
+  margin: 1rem auto;
+  overflow: hidden;       
+}
 
-  .carousel-item img {
-    height: 400px;
-  }
+.carousel-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;      
+  display: block;
+}
 
   /* Services Section */
   .services-section {
@@ -390,6 +397,13 @@ img {
   width: 300px;
   height: auto;
   z-index: 3;
+}
+
+.services-grid .service-card:last-child {
+  grid-column: 1 / -1;       /* take the full row */
+  justify-self: center;      /* center horizontally */
+  max-width: 500px;          /* keeps it from stretching */
+  width: 100%;               /* responsive */
 }
 
 /* --- About Section --- */
@@ -609,24 +623,36 @@ img {
 
 .footer .container {
   display: grid;
-  grid-template-columns: 2fr 1fr 1fr 1fr;
+  grid-template-columns: 2fr 1fr 1fr 1fr; /* keeps your brand wider */
+  align-items: start; /* neat vertical alignment */
   gap: 40px;
+
+  /* 🔑 Alignment fix */
+  max-width: 1200px;  /* same width as main sections */
+  margin: 0 auto;     /* center within viewport */
+  padding: 0 2rem;    /* side breathing room */
 }
 
 .footer-brand {
+  display: flex;              /* 🔄 new: use flex to group logo + text */
+  flex-direction: column;     /* 🔄 stack vertically */
+  align-items: flex-start;    /* 🔄 left align inside */
   margin-right: 40px;
 }
 
 .footer-brand img {
-  width: 120px;
-  margin-bottom: 20px;
+  width: 100px;          /* 🔄 was 120px */
+  margin-bottom: 10px;   /* 🔄 was 20px */
+  margin-top: -10px; 
 }
 
 .footer-brand p {
   color: #888;
   font-size: 0.9rem;
-  line-height: 1.6;
-  margin-top: 15px;
+  line-height: 1.5;      /* 🔄 was 1.6 */
+  margin: 0;             /* 🔄 was margin-top: 15px */
+  margin-top: -15px;
+  max-width: 250px;      /* 🔄 new: keeps text tidy */
 }
 
 .footer-section h3 {
@@ -678,7 +704,7 @@ img {
 }
 
 @media (max-width: 768px) {
-  .footer-container {
+  .footer .container {   /* 🔄 fixed selector (was .footer-container which doesn’t exist) */
     grid-template-columns: 1fr;
     gap: 30px;
   }
