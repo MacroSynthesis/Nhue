@@ -408,7 +408,7 @@ img {
 
 /* --- About Section --- */
 .about-section {
-  background: url('../images/background2.jpg') no-repeat center center fixed;
+  background: url('../images/aboutusbg.png') no-repeat center center fixed;
   background-size: cover;
   position: relative;
   color: white;
@@ -417,16 +417,16 @@ img {
 }
 
 .about-wrapper {
-  max-width: 1200px;
+  max-width: 100%;
   margin: 0 auto;
-  padding: 0 2rem;
-  text-align: left;
+  padding: 0 6.2rem;
+  text-align: center;
 }
 
 .about-wrapper h2 {
   font-size: 2rem;
   margin-bottom: 1em;
-  text-align: left;
+  text-align: center;
 }
 
 .about-wrapper p {
@@ -434,7 +434,7 @@ img {
   margin: 0 0 3em 0;
   line-height: 1.8;
   font-size: 1.1rem;
-  text-align: left;
+  text-align: center;
   letter-spacing: 0.2px;
 }
 
@@ -508,36 +508,48 @@ img {
   background: #FDCA21;
 }
 
-/* Navigation Buttons */
-.carousel button {
+.carousel-btn {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  background: rgba(0,0,0,0.3);
-  border: none;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
   color: white;
-  font-size: 1.5rem;
   cursor: pointer;
   z-index: 10;
-  width: 40px;
-  height: 40px;
+  width: 60px;
+  height: 60px;
   display: flex;
   align-items: center;
   justify-content: center;
   border-radius: 50%;
+  transition: all 0.3s ease;
+  opacity: 0;
 }
 
-.carousel button:hover {
-  background: rgba(0,0,0,0.5);
+.carousel-container:hover .carousel-btn {
+  opacity: 1;
 }
 
-.prev { 
-  left: -60px;
+.carousel-btn:hover {
+  background: rgba(255, 255, 255, 0.25);
+  transform: translateY(-50%) scale(1.1);
 }
 
-.next { 
-  right: -60px;
+.prev {
+  left: 20px;
 }
+
+.next {
+  right: 20px;
+}
+
+.carousel-btn svg {
+  width: 36px;
+  height: 36px;
+}
+
 
 /* --- Services Section --- */
 .services-section {
