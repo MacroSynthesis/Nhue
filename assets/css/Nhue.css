@@ -641,7 +641,7 @@ img {
 .service-card {
   background: rgba(255, 255, 255, 0.95);
   border-radius: 24px;
-  padding: 40px;
+  padding: 20px 40px 45px;
   text-align: left;
   backdrop-filter: blur(10px);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -664,6 +664,12 @@ img {
   font-size: 1.1rem;
   line-height: 1.6;
   margin: 0;
+}
+/* Center the last card if there's an odd number */
+.services-grid .service-card:last-child:nth-child(odd) {
+  grid-column: 1 / -1;
+  justify-self: center;
+  max-width:  50%; /* optional: prevents full width stretch */
 }
 
 @media (max-width: 768px) {
