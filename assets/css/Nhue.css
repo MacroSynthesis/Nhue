@@ -293,6 +293,12 @@ img {
     font-size: 2.5rem;
   }
 
+  .side-logo {
+    width: 200px;
+    right: 1em;
+    bottom: 15px;
+  }
+
   /* About Section */
   .about-section {
     padding: 6rem 0;
@@ -416,6 +422,15 @@ img {
     height: 30px;
   }
 }
+
+/* Side Logo */
+.side-logo {
+  position: absolute;
+  bottom: 25px;
+  right: 2em;
+  width: 300px;
+  height: auto;
+  z-index: 3;
 }
 
 /* --- About Section --- */
